@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.list-item {
+  border: 1px solid rgb(219, 214, 214) !important;
+  border-radius: 30px !important;
+  margin-bottom: 10px;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+}
+
+.weather {
+  position: absolute;
+  top: 60px;
+  max-width: 90%;
+  margin: auto;
+  border: 1px solid rgb(219, 214, 214) !important;
+  border-radius: 30px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  z-index: 3;
+}
+
+.card.custom-card {
+  background-color: rgb(252, 246, 246);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-body.custom-body {
+  margin: 5rem, auto;
+}
+.btn.custom-btn {
+  /* display: flex;
+  text-align: center;
+  justify-content: end; */
+  border-radius: "5px";
+  background-color: rgb(61, 138, 61);
+  border: 1px solid rgb(44, 99, 44);
+  margin: 3rem auto;
+}
+.btn.custom-btn:hover {
+  background-color: rgb(79, 173, 79);
+}
+
+.inputEmpty {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: solid 1px green;
+  cursor: pointer;
+}
+.inputFull {
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: solid 1px green;
+  cursor: pointer;
+}
+.add {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: solid 1px white;
+  color: green;
+  background-color: white;
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  float: right;
+}
+
+.image {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.btn-group.btnGroup {
+  height: 11.5vh;
+  padding: 0;
+  border: 1px solid rgb(223, 221, 221);
+  border-radius: 0% !important;
+}
+
+.btn.btnSolo {
+  background-color: white;
+  color: black;
+  border-radius: 0%;
+  border: transparent;
+}
+.btn.btnSolo:active,
+.btn.btnSolo:checked,
+.btn.btnSolo:hover,
+.btn.btnSolo:focus {
+  background-color: green;
+  box-shadow: none !important;
+}
