@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Button, ButtonGroup } from "react-bootstrap";
 import Map from "../components/Map";
+import { MapContext } from "../components/MapContext";
 
 const MapScreen = () => {
+  const { setDistance, setChosenPlaces } = useContext(MapContext);
   const navigate = useNavigate();
   const goBack = () => {
+    setDistance("");
+    setChosenPlaces([]);
     navigate("/");
   };
+
   return (
     <Container style={{ maxWidth: "700px", height: "100vh" }}>
       <Row>
@@ -16,16 +21,13 @@ const MapScreen = () => {
       <Row>
         <ButtonGroup className="btnGroup">
           <Button className="btnSolo" onClick={goBack}>
-            <i className="bi bi-arrow-90deg-left"></i>
+            Go Back
           </Button>
-          <Button className="btnSolo">
-            <i className="bi bi-arrow-90deg-up"></i>
+          <Button className="btnSolo" onClick={() => setDistance("non filter")}>
+            Chosen Categories
           </Button>
-          <Button className="btnSolo">
-            <i className="bi bi-arrow-90deg-right"></i>
-          </Button>
-          <Button className="btnSolo">
-            <i className="bi bi-arrow-90deg-down"></i>
+          <Button className="btnSolo" onClick={() => setDistance("filter")}>
+            3km Radius
           </Button>
         </ButtonGroup>
       </Row>

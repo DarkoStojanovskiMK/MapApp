@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import { ListGroup } from "react-bootstrap";
 import { MapContext } from "../components/MapContext";
 import Marker from "./Marker";
+import { getDistance } from "geolib";
 
 const Map = ({ height }) => {
   const defaultProps = {
@@ -12,7 +13,32 @@ const Map = ({ height }) => {
     },
     zoom: 11,
   };
-  const { morePlaces } = useContext(MapContext);
+  const { morePlaces, setMorePlaces, userLocation, distance, chosenPlaces } =
+    useContext(MapContext);
+
+  useEffect(() => {
+    if (distance === "filter") {
+      const filteredPlaces = morePlaces.filter((place) => {
+        const dst = getDistance(
+          {
+            latitude: userLocation.latitude,
+            longitude: userLocation.longitude,
+          },
+          { latitude: place.lat, longitude: place.lng }
+        );
+
+        if (dst < 3000) {
+          return place;
+        }
+      });
+      setMorePlaces(filteredPlaces);
+    }
+    if (distance === "non filter") {
+      let dataPlaces = [];
+      dataPlaces = chosenPlaces.map((place) => place.data);
+      setMorePlaces(dataPlaces.flat());
+    }
+  }, [distance]);
 
   return (
     <div
@@ -44,6 +70,12 @@ const Map = ({ height }) => {
               />
             );
           })}
+        <Marker
+          lat={userLocation.latitude}
+          lng={userLocation.longitude}
+          image="\pictures\Location_dot_blue.svg"
+          name=" "
+        />
       </GoogleMapReact>
     </div>
   );

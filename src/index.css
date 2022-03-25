@@ -42,9 +42,6 @@ code {
   margin: 5rem, auto;
 }
 .btn.custom-btn {
-  /* display: flex;
-  text-align: center;
-  justify-content: end; */
   border-radius: "5px";
   background-color: rgb(61, 138, 61);
   border: 1px solid rgb(44, 99, 44);

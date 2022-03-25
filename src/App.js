@@ -9,10 +9,24 @@ import MapScreen from "./screens/MapScreen";
 function App() {
   const [chosenPlaces, setChosenPlaces] = useState([]);
   const [morePlaces, setMorePlaces] = useState([]);
+  const [userLocation, setUserLocation] = useState({
+    latitude: "",
+    longitude: "",
+  });
+  const [distance, setDistance] = useState("");
 
   return (
     <MapContext.Provider
-      value={{ morePlaces, setMorePlaces, chosenPlaces, setChosenPlaces }}
+      value={{
+        morePlaces,
+        setMorePlaces,
+        chosenPlaces,
+        setChosenPlaces,
+        userLocation,
+        setUserLocation,
+        distance,
+        setDistance,
+      }}
     >
       <Router>
         <Routes>

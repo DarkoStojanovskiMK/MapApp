@@ -8,8 +8,21 @@ import { MapContext } from "../components/MapContext";
 
 const HomeScreen = () => {
   const navigate = useNavigate();
-  const { setMorePlaces, chosenPlaces, setChosenPlaces } =
+  const { setMorePlaces, chosenPlaces, setChosenPlaces, setUserLocation } =
     useContext(MapContext);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (success) => {
+        setUserLocation({
+          latitude: success.coords.latitude,
+          longitude: success.coords.longitude,
+        });
+      },
+      (error) => console.log(error),
+      { enableHighAccuracy: true }
+    );
+  }, []);
 
   useEffect(() => {
     let dataPlaces = [];
@@ -19,7 +32,7 @@ const HomeScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setChosenPlaces([]);
+
     navigate("/map");
   };
 
